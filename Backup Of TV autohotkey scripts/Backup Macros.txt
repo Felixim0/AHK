@@ -1,0 +1,40 @@
+Sub test()
+   MsgBox ("Hello world")
+End Sub
+
+Sub extractDataAsString()
+    Dim olItem As Outlook.MailItem
+    Dim sText As String
+
+    Set olItem = ActiveExplorer.Selection.Item(1)
+    sText = olItem.Body
+    
+
+    
+    Dim fso As Object
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    
+    Dim Fileout As Object
+    Set Fileout = fso.CreateTextFile("C:\Users\Local User\Desktop\textFile.txt", True, True)
+    Fileout.Write sText
+    Fileout.Close
+
+End Sub
+
+
+Sub extractDataAsString(item As Outlook.MailItem)
+    Dim olItem As Outlook.MailItem
+    Dim sText As String
+
+    Set olItem = ActiveExplorer.Selection.item(1)
+    sText = olItem.Body
+    
+    Dim fso As Object
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    
+    Dim Fileout As Object
+    Set Fileout = fso.CreateTextFile("K:\Project\Python\incomingEmail.txt", True, True)
+    Fileout.Write sText
+    Fileout.Close
+
+End Sub
