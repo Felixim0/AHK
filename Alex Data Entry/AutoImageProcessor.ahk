@@ -1,6 +1,7 @@
 #Persistent  ; This keeps the script running
 SetTimer, UpdateToolTip, 10
 toggle := 0  ; Initialize a toggle variable to keep track of the state
+CoordMode, Mouse, Screen ; makes mouse coordinates to be relative to screen.
 
 UpdateToolTip:
 if (toggle = 1)  ; Only show the tooltip if the "2" key has been pressed once.
@@ -20,57 +21,59 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
     ; Store the current clipboard content into a variable
     pnumber := Clipboard
 
-    ; Send Ctrl Down
+
+    ; Press Ctrl Down
     Send, ^{Down}
 
     ; Wait for 100ms
-    Sleep, 100
+    Sleep, 1000
 
-    ; Scroll Down 5 times (for zooming out)
+    ; Send the "-" key 5 times
     Loop, 5
     {
-        Send, {WheelDown}
-        Sleep, 100  ; 100ms delay between send commands
+        Send, -
+        Sleep, 500  ; delay between send commands
     }
 
     ; Release Ctrl key
     Send, ^{Up}
 
-    Sleep, 100  ; 100ms delay before the next send command
+    Sleep, 2000  ; delay before the next send command
 
     ; Send F11
     Send, {F11}
 
+    Sleep, 500  ; delay before the next send command
+
     ; Open Snipping Tool
     Run, snippingtool
 
-    ; Give some time for the snipping tool to open
-    Sleep, 1000
+    Sleep, 2000  ; delay before the next send command
 
     ; Send Ctrl+Shift+N for new snip
     Send, ^+n
 
-    Sleep, 500  ; Give some time for snip mode to activate
+    Sleep, 2000  ; delay before the next send command
 
     ; Define hardcoded coordinates for top left and bottom right
     x1 := 0
     y1 := 0
-    x2 := 100
-    y2 := 100
+    x2 := 592
+    y2 := 986
 
     ; Click and drag from (x1,y1) to (x2,y2)
     MouseClickDrag, L, x1, y1, x2, y2
 
 
-    Sleep, 1000  ; Give some time for snip to be captured
+    Sleep, 2000  ; delay before the next send command
 
     ; Zoom out (i.e., scroll up) 5 times
     Send, ^{Down}
     Sleep, 100
     Loop, 5
     {
-        Send, {WheelUp}
-        Sleep, 100
+        Send, +
+        Sleep, 500  ; delay between send commands
     }
 
     ; Send F11 to toggle full screen
