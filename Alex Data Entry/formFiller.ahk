@@ -37,7 +37,7 @@ else  ; If it's the second time "1" is pressed
 return
 
 SendTab:
-Send, {Tab}
+Send, {Right}{Left}{Tab}
 return
 
 SendRightTab:
