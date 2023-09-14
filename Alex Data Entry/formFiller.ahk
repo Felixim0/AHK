@@ -14,7 +14,7 @@ else
 }
 return
 
-1::  ; When number "1" is pressed
+^+1::  ; When number "1" is pressed
 if (toggle = 0)  ; Check if it's the first time "1" is pressed
 {
     Send, {Tab 5}  ; Send the "Tab" key 5 times

@@ -14,7 +14,7 @@ else
 }
 return
 
-2::  ; When number "2" is pressed
+^+2::  ; When number "2" is pressed
 if (toggle = 0)  ; Check if it's the first time "2" is pressed
 {
     ; Store the current clipboard content into a variable
@@ -52,14 +52,17 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
 
     Sleep, 500  ; Give some time for snip mode to activate
 
-    ; Define coordinates for top left and bottom 30%
-    SysGet, MonitorHeight, 1  ; Get monitor height
-    EndY := MonitorHeight * 0.7  ; Compute 70% of the monitor's height
+    ; Define hardcoded coordinates for top left and bottom right
+    x1 := 0
+    y1 := 0
+    x2 := 100
+    y2 := 100
 
-    ; Click and drag from top left to bottom 30%
-    MouseClickDrag, L, 0, 0, A_ScreenWidth, EndY
+    ; Click and drag from (x1,y1) to (x2,y2)
+    MouseClickDrag, L, x1, y1, x2, y2
 
-    Sleep, 500  ; Give some time for snip to be captured
+
+    Sleep, 1000  ; Give some time for snip to be captured
 
     ; Zoom out (i.e., scroll up) 5 times
     Send, ^{Down}

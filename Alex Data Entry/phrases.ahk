@@ -15,7 +15,7 @@ else
 return
 
 
-3::  ; When number "3" is pressed
+^+3::  ; When number "3" is pressed
 if (toggle = 0)  ; Check if it's the first time "3" is pressed
 {
     toggle := 1  ; Change the toggle state
