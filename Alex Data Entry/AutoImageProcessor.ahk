@@ -22,10 +22,10 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
     pnumber := Clipboard
 
     ; ZOOM OUT 5 times
-    MouseMove, 1879, 70, 20, R  ; Move Mouse to menu
+    MouseMove, 1879, 70, 20  ; Move Mouse to menu
     Click ; Click on menu
     Sleep 100
-    MouseMove, 1743, 241, 10, R ; Move Mouse to Minus Button
+    MouseMove, 1743, 241, 10 ; Move Mouse to Minus Button
     Click ; Click on menu
     Sleep 10
     Click ; Click on menu
@@ -67,10 +67,10 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
 
 
     ; ZOOM Back In 5 times
-    MouseMove, 1879, 70, 20, R  ; Move Mouse to menu
+    MouseMove, 1879, 70, 20  ; Move Mouse to menu
     Click ; Click on menu
     Sleep 100
-    MouseMove, 1831, 235, 10, R ; Move Mouse to Minus Button
+    MouseMove, 1831, 235, 10 ; Move Mouse to Minus Button
     Click ; Click on menu
     Sleep 10
     Click ; Click on menu
