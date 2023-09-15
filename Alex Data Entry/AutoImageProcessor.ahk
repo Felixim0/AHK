@@ -21,24 +21,23 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
     ; Store the current clipboard content into a variable
     pnumber := Clipboard
 
+    ; ZOOM OUT 5 times
+    MouseMove, 1879, 70, 20, R  ; Move Mouse to menu
+    Click ; Click on menu
+    Sleep 100
+    MouseMove, 1743, 241, 10, R ; Move Mouse to Minus Button
+    Click ; Click on menu
+    Sleep 10
+    Click ; Click on menu
+    Sleep 10
+    Click ; Click on menu
+    Sleep 10
+    Click ; Click on menu
+    Sleep 10
+    Click ; Click on menu
+    Send, {Esc} ; Close the Menu
 
-    ; Press Ctrl Down
-    Send, ^{Down}
-
-    ; Wait for 100ms
-    Sleep, 1000
-
-    ; Send the "-" key 5 times
-    Loop, 5
-    {
-        Send, -
-        Sleep, 500  ; delay between send commands
-    }
-
-    ; Release Ctrl key
-    Send, ^{Up}
-
-    Sleep, 2000  ; delay before the next send command
+    Sleep, 1000  ; delay before the next send command
 
     ; Send F11
     Send, {F11}
@@ -48,12 +47,12 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
     ; Open Snipping Tool
     Run, snippingtool
 
-    Sleep, 2000  ; delay before the next send command
+    Sleep, 1000  ; delay before the next send command
 
     ; Send Ctrl+Shift+N for new snip
     Send, ^+n
 
-    Sleep, 2000  ; delay before the next send command
+    Sleep, 1000  ; delay before the next send command
 
     ; Define hardcoded coordinates for top left and bottom right
     x1 := 0
@@ -64,21 +63,29 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
     ; Click and drag from (x1,y1) to (x2,y2)
     MouseClickDrag, L, x1, y1, x2, y2
 
+    Sleep, 1000  ; delay before the next send command
 
-    Sleep, 2000  ; delay before the next send command
 
-    ; Zoom out (i.e., scroll up) 5 times
-    Send, ^{Down}
-    Sleep, 100
-    Loop, 5
-    {
-        Send, +
-        Sleep, 500  ; delay between send commands
-    }
+    ; ZOOM Back In 5 times
+    MouseMove, 1879, 70, 20, R  ; Move Mouse to menu
+    Click ; Click on menu
+    Sleep 100
+    MouseMove, 1831, 235, 10, R ; Move Mouse to Minus Button
+    Click ; Click on menu
+    Sleep 10
+    Click ; Click on menu
+    Sleep 10
+    Click ; Click on menu
+    Sleep 10
+    Click ; Click on menu
+    Sleep 10
+    Click ; Click on menu
+    Send, {Esc} ; Close the Menu
 
     ; Send F11 to toggle full screen
     Send, {F11}
-    Sleep, 500
+
+    Sleep, 1000  ; delay before the next send command
 
     ; Refocus on the Snipping Tool
     WinActivate, Snipping Tool
