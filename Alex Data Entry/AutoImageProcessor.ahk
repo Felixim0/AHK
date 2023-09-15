@@ -21,6 +21,12 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
     ; Store the current clipboard content into a variable
     pnumber := Clipboard
 
+    ; Send the pageup to ensure the page starts at the top
+    Send, {PgUp}
+
+    ; Send Control-0 to ensure the zoom level is 0
+    Send, ^0
+
     ; ZOOM OUT 5 times
     MouseMove, 1879, 70, 20  ; Move Mouse to menu
     Click ; Click on menu
@@ -41,6 +47,9 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
 
     ; Send F11
     Send, {F11}
+
+    ; Scroll Down Once (standardized by pageup at start)
+    Click, WheelDown
 
     Sleep, 500  ; delay before the next send command
 
@@ -65,6 +74,12 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
 
     Sleep, 1000  ; delay before the next send command
 
+    ; Refocus On Edge
+    MouseMove, 1879, 70, 5
+    Click
+
+    ; Send F11 to toggle full screen
+    Send, {F11}
 
     ; ZOOM Back In 5 times
     MouseMove, 1879, 70, 20  ; Move Mouse to menu
@@ -81,9 +96,6 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
     Sleep 10
     Click ; Click on menu
     Send, {Esc} ; Close the Menu
-
-    ; Send F11 to toggle full screen
-    Send, {F11}
 
     Sleep, 1000  ; delay before the next send command
 
