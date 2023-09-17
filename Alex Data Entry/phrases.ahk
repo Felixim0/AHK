@@ -73,7 +73,7 @@ PrepareHelloWithFutureDate:
 
         if !ErrorLevel ; Ensure the user didn't press Cancel
         {
-            preparedMessage := "hello " name "`nThe future Date is: " futureDate    
+            preparedMessage :="Dear " name ", We have received your referral. `nUnfortunately, we are unable to process it because there is at least one unanswered question on the AQ50 form. Please complete this attached self-scoring form, please note that you need to screenshot the questions and result and upload this as a message on the portal so that we can proceed with processing your referral. `n`nIf we do not receive it by " futureDate ", we will unfortunately have to reject the referral and will write to your referrer to discharge you. `n`nYou can seek a new referral in the future, but our pathway is currently closed, due to reopen soon. `n`nPlease see website for more information. `n`nYours kindly, `nPUK Triage team."
         }
     }
 return
