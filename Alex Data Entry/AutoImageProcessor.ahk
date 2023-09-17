@@ -67,7 +67,7 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
     x1 := 0
     y1 := 0
     x2 := 592
-    y2 := 986
+    y2 := 1000
 
     ; Click and drag from (x1,y1) to (x2,y2)
     MouseClickDrag, L, x1, y1, x2, y2
