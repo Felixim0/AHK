@@ -28,10 +28,10 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
     Send, ^0
 
     ; ZOOM OUT 5 times
-    MouseMove, 1879, 70, 20  ; Move Mouse to menu
+    MouseMove, 1879, 70, 5  ; Move Mouse to menu
     Click ; Click on menu
     Sleep 100
-    MouseMove, 1743, 241, 10 ; Move Mouse to Minus Button
+    MouseMove, 1743, 241, 5 ; Move Mouse to Minus Button
     Click ; Click on menu
     Sleep 10
     Click ; Click on menu
@@ -43,7 +43,7 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
     Click ; Click on menu
     Send, {Esc} ; Close the Menu
 
-    Sleep, 1000  ; delay before the next send command
+    Sleep, 600 ; delay before the next send command
 
     ; Send F11
     Send, {F11}
@@ -61,7 +61,7 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
     ; Send Ctrl+Shift+N for new snip
     Send, ^+n
 
-    Sleep, 1000  ; delay before the next send command
+    Sleep, 600 ; delay before the next send command
 
     ; Define hardcoded coordinates for top left and bottom right
     x1 := 0
@@ -82,10 +82,10 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
     Send, {F11}
 
     ; ZOOM Back In 5 times
-    MouseMove, 1879, 70, 20  ; Move Mouse to menu
+    MouseMove, 1879, 70, 5  ; Move Mouse to menu
     Click ; Click on menu
     Sleep 100
-    MouseMove, 1831, 235, 10 ; Move Mouse to Minus Button
+    MouseMove, 1831, 235, 5 ; Move Mouse to Minus Button
     Click ; Click on menu
     Sleep 10
     Click ; Click on menu
@@ -97,6 +97,45 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
     Click ; Click on menu
     Send, {Esc} ; Close the Menu
 
+    ; Refocus on the Snipping Tool
+    WinActivate, Snipping Tool
+
+    ; Send Ctrl+S to save
+    Send, ^s
+    Sleep, 300
+
+    ; Enter filename
+    Send, PUK-%pnumber%-AQ50Score.jpg
+    Sleep, 300
+
+    ; Send the Enter key to save the file
+    Send, {Enter}
+
+    ; Now save the score
+    Send, !{Tab} ; Go back to EDGE
+
+    ; Finish the form, tab to "mark" then "enter"
+    Sleep, 100
+    Send {Tab}
+    Send, {Enter}
+
+    ; Open Snipping Tool
+    Run, snippingtool
+
+    ; Send Ctrl+Shift+N for new snip
+    Send, ^+n
+
+    Sleep, 600 ; delay before the next send command
+
+    ; Define hardcoded coordinates for top left and bottom right
+    Sx1 := 981
+    Sy1 := 214
+    Sx2 := 1793
+    Sy2 := 510
+
+    ; Click and drag from (Sx1,Sy1) to (Sx2,Sy2)
+    MouseClickDrag, L, Sx1, Sy1, Sx2, Sy2
+
     Sleep, 1000  ; delay before the next send command
 
     ; Refocus on the Snipping Tool
@@ -104,14 +143,10 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
 
     ; Send Ctrl+S to save
     Send, ^s
-    Sleep, 500
+    Sleep, 300
 
     ; Enter filename
-    Send, PUK-%pnumber%-AQ50Score.jpg
-    Sleep, 500
-
-    ; Send the Enter key to save the file
-    Send, {Enter}
+    Send, PUK-%pnumber%-AQ50Results.jpg
 
     toggle := 1  ; Change the toggle state
 }

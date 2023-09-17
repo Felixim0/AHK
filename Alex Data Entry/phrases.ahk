@@ -41,6 +41,64 @@ UpdateToolTip:
     }
 return
 
+global preparedMessage ; Declare a global variable to store the prepared message
+
+PrepareHelloWithFutureDate:
+    if (toggle = 1)
+    {
+        ; Temporarily disable the hotkeys
+        for key, text in shortcuts
+        {
+            Hotkey, % key, Off
+        }
+        Hotkey, x, Off
+        Hotkey, z, Off
+
+        ; Adjust the date first
+        futureDateTime := A_Now
+        futureDateTime += 14, Days  ; Add 2 weeks
+
+        ; Then format the adjusted date
+        FormatTime, futureDate, % futureDateTime, MMMM d, yyyy
+
+        InputBox, name, Enter Name, Please enter your name:, , 300, 150
+
+        ; Reactivate the hotkeys
+        for key, text in shortcuts
+        {
+            Hotkey, % "$" key, SendShortcutText, On
+        }
+        Hotkey, x, PrepareHelloWithFutureDate, On
+        Hotkey, z, SendPreparedMessage, On
+
+        if !ErrorLevel ; Ensure the user didn't press Cancel
+        {
+            preparedMessage := "hello " name "`nThe future Date is: " futureDate    
+        }
+    }
+return
+
+SendPreparedMessage:
+    if (toggle = 1 && preparedMessage) ; Only send if toggle is active and there is a prepared message
+    {
+        ; Store the current clipboard content
+        originalClipboard := ClipboardAll
+
+        ; Set the clipboard to the prepared message
+        Clipboard := preparedMessage
+
+        ; Wait for the clipboard to contain the data
+        ClipWait, 1
+
+        ; Send Ctrl+V to paste the prepared message
+        Send ^v
+
+        ; Restore the original clipboard content
+        Clipboard := originalClipboard
+    }
+return
+
+
 ^+3::  ; When Ctrl + Shift + number "3" is pressed
     if (toggle = 0)  ; Check if it's the first time "3" is pressed
     {
@@ -50,7 +108,8 @@ return
         {
             Hotkey, % "$" key, SendShortcutText, On
         }
-        ; Enable hardcoded hotkeys here (e.g., Hotkey, $a, triageMessage, On)
+        Hotkey, x, PrepareHelloWithFutureDate, On  ; Bind "x" key to PrepareHelloWithFutureDate
+        Hotkey, z, SendPreparedMessage, On  ; Bind "z" key to SendPreparedMessage
     }
     else  ; If it's the second time "3" is pressed
     {
@@ -60,6 +119,7 @@ return
         {
             Hotkey, % key, Off
         }
-        ; Disable hardcoded hotkeys here (e.g., Hotkey, a, Off)
+        Hotkey, x, Off  ; Unbind "x" key from PrepareHelloWithFutureDate
+        Hotkey, z, Off  ; Unbind "z" key from SendPreparedMessage
     }
 return

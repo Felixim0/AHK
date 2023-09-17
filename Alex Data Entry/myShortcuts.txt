@@ -1,5 +1,1 @@
-a:This is text for the first letter
-b:another letter
-d:more phrases!
-r:WOWOWOWORDS!
-e:ddd!
+a:This is text
