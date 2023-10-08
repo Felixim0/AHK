@@ -21,6 +21,10 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
 {
   ; Store the current clipboard content into a variable
   pnumber := Clipboard
+  
+  ; Save the variable to a text file named "lastPnumber.txt"
+  FileDelete, lastPnumber.txt ; This will delete the file if it exists
+  FileAppend, %pnumber%, lastPnumber.txt ; This will create a new file and append the content of the variable
 
   ; Send the pageup to ensure the page starts at the top
   Send, {PgUp}
