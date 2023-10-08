@@ -32,10 +32,10 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
   Sleep, 600 ; delay before the next send command
 
   ; Define hardcoded coordinates for top left and bottom right
-  Sx1 := 968
-  Sy1 := 209
-  Sx2 := 1847
-  Sy2 := 598
+  Sx1 := 1399
+  Sy1 := 165
+  Sx2 := 1779
+  Sy2 := 304
 
   ; Click and drag from (Sx1,Sy1) to (Sx2,Sy2)
   MouseClickDrag, L, Sx1, Sy1, Sx2, Sy2
@@ -54,7 +54,7 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
 
   ; Send the Enter key to save the file
   Send, {Enter}
-  
+
   toggle := 1  ; Change the toggle state
 }
 else  ; If it's the second time "2" is pressed
