@@ -29,12 +29,12 @@ if (toggle = 0)  ; Check if it's the first time "4" is pressed
   ; Open Snipping Tool
   Run, snippingtool
 
-  Sleep, 800 ; delay before the next send command
+  Sleep, 1000 ; delay before the next send command
 
   ; Send Ctrl+Shift+N for new snip
   Send, ^+n
 
-  Sleep, 800 ; delay before the next send command
+  Sleep, 1000 ; delay before the next send command
 
   ; Define hardcoded coordinates for top left and bottom right
   Sx1 := 1543
@@ -45,14 +45,14 @@ if (toggle = 0)  ; Check if it's the first time "4" is pressed
   ; Click and drag from (Sx1,Sy1) to (Sx2,Sy2)
   MouseClickDrag, L, Sx1, Sy1, Sx2, Sy2
 
-  Sleep, 5000  ; delay before the next send command
+  Sleep, 1000  ; delay before the next send command
 
   ; Refocus on the Snipping Tool
   WinActivate, Snipping Tool
 
   ; Send Ctrl+S to save
   Send, ^s
-  Sleep, 2000
+  Sleep, 1000
 
   ; Enter filename
   Send, PUK-%pnumber%-AQ50Results1.jpg
