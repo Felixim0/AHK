@@ -21,7 +21,7 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
 {
   ; Store the current clipboard content into a variable
   pnumber := Clipboard
-  
+
   ; Save the variable to a text file named "lastPnumber.txt"
   FileDelete, lastPnumber.txt ; This will delete the file if it exists
   FileAppend, %pnumber%, lastPnumber.txt ; This will create a new file and append the content of the variable
@@ -87,10 +87,10 @@ if (toggle = 0)  ; Check if it's the first time "2" is pressed
   Send, {F11}
 
   ; ZOOM Back In 5 times
-  MouseMove, 1879, 70, 15  ; Move Mouse to menu
+  MouseMove, 2525, 74, 15  ; Move Mouse to menu
   Click ; Click on menu
   Sleep 100
-  MouseMove, 2525, 74, 15 ; Move Mouse to PLUS Button
+  MouseMove, 2475, 244, 15 ; Move Mouse to PLUS Button
   Click ; Click on menu
   Sleep 10
   Click ; Click on menu
