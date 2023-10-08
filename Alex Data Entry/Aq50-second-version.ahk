@@ -20,8 +20,12 @@ return
 ^+4::  ; When number "4" is pressed
 if (toggle = 0)  ; Check if it's the first time "2" is pressed
 {
-  ; Store the current clipboard content into a variable
-  pnumber := Clipboard
+  ; Load the contents of the lastPnumber file as pnumber
+  if FileExist("lastPnumber.txt")
+  {
+      ; If the file exists, read its contents into the pnumber variable
+      FileRead, pnumber, lastPnumber.txt
+  }
 
   ; Open Snipping Tool
   Run, snippingtool
