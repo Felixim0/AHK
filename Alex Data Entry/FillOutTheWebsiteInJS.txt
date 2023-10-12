@@ -1,0 +1,97 @@
+const x = document.querySelector('[data-testid="buttonNewNote"]');
+x.click();
+
+
+const dropdown = document.querySelector('[data-testid="noteType"]');
+
+// 1. Simulate a click to open the dropdown
+dropdown.click();
+
+// Introducing a delay might be necessary here as opening the dropdown might take some time
+// and you want to ensure the dropdown options are rendered before you try to select one.
+setTimeout(() => {
+  // 2. Find the item labeled "Admin"
+  const adminOption = Array.from(document.querySelectorAll('.ant-select-dropdown-menu-item'))
+                            .find(el => el.textContent.trim() === "Admin");
+
+  // 3. Simulate a click on the "Admin" option
+  if (adminOption) {
+    adminOption.click();
+  }
+}, 100);  // 100ms delay, adjust if necessary
+
+
+const dropdownNoteSubject = document.querySelector('[data-testid="noteSubject"]');
+
+// 1. Simulate a click to open the dropdown
+dropdownNoteSubject.click();
+
+// Introducing a delay might be necessary here as opening the dropdown might take some time
+// and you want to ensure the dropdown options are rendered before you try to select one.
+setTimeout(() => {
+  // 2. Find the item labeled "message"
+  const messageOption = Array.from(document.querySelectorAll('.ant-select-dropdown-menu-item'))
+                             .find(el => el.textContent.trim().toLowerCase() === "message");
+
+  // 3. Simulate a click on the "message" option
+  if (messageOption) {
+    messageOption.click();
+  }
+}, 100);  // 100ms delay, adjust if necessary
+
+
+// Enter the text
+
+const richTextEditor = document.querySelector('[data-testid="Notes"] .ql-editor');
+
+// Setting the innerHTML to desired text
+richTextEditor.innerHTML = 'AQ50 Scored.';
+
+
+
+// Select the Radios
+const x = document.querySelectorAll('.ant-radio-wrapper > span:not(.ant-radio)');
+
+const lastItem = x[x.length - 1];
+lastItem.click();
+
+// Check the create a task button
+const checkCreateTaskButton = document.querySelector('#createTaskFromNote');
+checkCreateTaskButton.click();
+
+// Selec thte upload button
+const buttonElement = document.querySelector('button.ant-btn .anticon-upload + span');
+buttonElement.click();
+
+// SAVE BIT
+
+const divContainer = document.querySelector('div.ant-col.ant-col-24[style="display: flex; align-items: center; justify-content: center;"]');
+const saveButton = divContainer.querySelector('button.ant-btn.ant-btn-primary');
+saveButton.click();
+
+// SECOND BIT AFTER SAVE
+
+
+const assignedToTypeahead = document.querySelector('input[data-testid="assign-task-to-user-search"]');
+assignedToTypeahead.value="ASD Triage Team";
+
+const taskTypeTypeahead = document.querySelector('input[data-testid="task-type-search"]');
+taskTypeTypeahead.value="AQ Scored";
+
+
+const callendar = document.querySelector('input[name="dueDate"][placeholder="Select date"]');
+let today = new Date();
+today.setDate(today.getDate() + 7);  // Add 7 days
+let dd = String(today.getDate()).padStart(2, '0');
+let mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+let yyyy = today.getFullYear();
+let dateOneWeekFromNow = dd + '/' + mm + '/' + yyyy;
+callendar.value = dateOneWeekFromNow;
+
+
+
+
+
+
+
+// Second bit end
