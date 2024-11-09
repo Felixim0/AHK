@@ -8,7 +8,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 brightness := 50
 
 ; Variable to control the amount of brightness change
-brightnessChange := 30
+brightnessChange := 20
 
 ; Hotkey to increase brightness when NumPad6 is pressed (NumLock On)
 NumPad6::
